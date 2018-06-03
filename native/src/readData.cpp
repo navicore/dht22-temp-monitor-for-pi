@@ -3,6 +3,15 @@
 #include "measure.h"
 #include "readData.h"
 
+/**
+ * based on code from https://github.com/ccoong7/DHT22.git
+ */
+
+/**
+ * 'signal' is the gpio number, ie 4 or 23 or...
+ * populates 'data' array with measurements for
+ * each loop iteration
+ */
 short readData(short signal, short unsigned *data) {
 
 	unsigned short val = 0x00;

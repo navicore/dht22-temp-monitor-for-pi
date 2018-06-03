@@ -6,6 +6,17 @@
 #include <wiringPi.h>
 #include "readData.h"
 
+/**
+ * based on code from https://github.com/ccoong7/DHT22.git
+ */
+
+/**
+ *
+ * get Celsius, Fahrenheit, and humidity in a float array
+ *
+ * if values are !> 0, retry
+ *
+ */
 JNIEXPORT jfloatArray JNICALL Java_onextent_iot_dht22_Dht22_get
 (JNIEnv * env, jobject obj, jint signal) {
 
@@ -19,7 +30,7 @@ JNIEXPORT jfloatArray JNICALL Java_onextent_iot_dht22_Dht22_get
 
 	// GPIO Initialization
 	if (wiringPiSetupGpio() == -1) {
-		printf("[x_x] GPIO Initialization FAILED.\n");
+		printf("GPIO Initialization FAILED\n");
 		return ret;
 	}
 
@@ -52,8 +63,6 @@ JNIEXPORT jfloatArray JNICALL Java_onextent_iot_dht22_Dht22_get
     float arr[3]={celsius,fahrenheit,humidity}; //set results
     env->SetFloatArrayRegion(ret,0,3,arr);
   
-  } else {
-    printf("[x_x] Invalid Data. Try again.\n\n");
   }
 
 	return ret;
