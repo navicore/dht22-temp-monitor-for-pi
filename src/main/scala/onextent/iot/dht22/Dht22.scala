@@ -6,7 +6,7 @@ import ch.jodersky.jni.nativeLoader
 class Dht22 {
 
   // --- Native methods
-  @native def get(): Array[Float]
+  @native def get(signal: Int): Array[Float]
 
 }
 
